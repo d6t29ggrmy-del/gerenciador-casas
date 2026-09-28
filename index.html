@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<!-- Gerenciador de Casas | v1.0 | 28/09/2026 | última alteração: versão inicial -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Gerenciador de Casas</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACaUlEQVR42u3dzU3DQBCAUWeUDjhQA7VwSAPcqAKJIxJVcKMBykoXNABGwQTPz/vuSPbu0+IBEw43d/eL9FVhCQSH4BAcgkNwCA7BITgEh+CQ4BAcgkNwCA7BITgEh+AQHBIcgkNwCA7BITgEh+AQHIJDgkNwCI6NPby+WQQ4vpXBBxxrZwYfcKx9N+FjWZbD8E8T/BHB+9Ojk4MMj6hwXL7rY30EGXzAsXWnB/oIMvgwrfzl1g4ZYYIMR8hoHNfYywk+ggw+huK49v719hFk8DEOx3/uWVcfDUfZHbeq2YgbZDhCRuDIsDedfAQZfDTHkW0/evgIMvjoOa2U2IC6I0yQ4Tq74ai14kV9BBmuuQ+Ouqd0uSsP6+v6O+Do8cODQndRY5Rt+WvP/CNukOG+quLo/apV8rsLa+ce6+GY8xdEae80rJf7LTOtDP/UlFQjTJBhBQrgICPbOoQV4SM1DjJyrklYBT6S4iAj8/rsNspikX/EDTIcIYlwkFFl3YIMPlLgIKPWGgYZfOw5rWBRdIQJMhwh++Ago7SPIIOPPZ85YMr2MJFxlFWt4BAcgkNwCA7BITgEh+BQ+45VLvT5dHvpl7x8nF2bk0NwCA7BITgEh+AQHBIcWuk47YY3vrs76i1oJ4fgEByCQ3AIDhllN5X57ZgSb+44OQSH4BAcgkNwCA7BITgkOASH4BAcgkNwCA7BITgEhwSH4BAcgkNwCA7BITgEh+CQ4BAc+k2J/pe9nByCQ3AIDsEhwSE4BIfgEByCQ3AIDsEhOCQ4BIfgEByCQ3AIDsEhOASH4JDgEByCQ3AIDsGhOn0CXii07bihBQkAAAAASUVORK5CYII=">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACaUlEQVR42u3dzU3DQBCAUWeUDjhQA7VwSAPcqAKJIxJVcKMBykoXNABGwQTPz/vuSPbu0+IBEw43d/eL9FVhCQSH4BAcgkNwCA7BITgEh+CQ4BAcgkNwCA7BITgEh+AQHBIcgkNwCA7BITgEh+AQHIJDgkNwCI6NPby+WQQ4vpXBBxxrZwYfcKx9N+FjWZbD8E8T/BHB+9Ojk4MMj6hwXL7rY30EGXzAsXWnB/oIMvgwrfzl1g4ZYYIMR8hoHNfYywk+ggw+huK49v719hFk8DEOx3/uWVcfDUfZHbeq2YgbZDhCRuDIsDedfAQZfDTHkW0/evgIMvjoOa2U2IC6I0yQ4Tq74ai14kV9BBmuuQ+Ouqd0uSsP6+v6O+Do8cODQndRY5Rt+WvP/CNukOG+quLo/apV8rsLa+ce6+GY8xdEae80rJf7LTOtDP/UlFQjTJBhBQrgICPbOoQV4SM1DjJyrklYBT6S4iAj8/rsNspikX/EDTIcIYlwkFFl3YIMPlLgIKPWGgYZfOw5rWBRdIQJMhwh++Ago7SPIIOPPZ85YMr2MJFxlFWt4BAcgkNwCA7BITgEh+BQ+45VLvT5dHvpl7x8nF2bk0NwCA7BITgEh+AQHBIcWuk47YY3vrs76i1oJ4fgEByCQ3AIDhllN5X57ZgSb+44OQSH4BAcgkNwCA7BITgkOASH4BAcgkNwCA7BITgEhwSH4BAcgkNwCA7BITgEh+CQ4BAc+k2J/pe9nByCQ3AIDsEhwSE4BIfgEByCQ3AIDsEhOCQ4BIfgEByCQ3AIDsEhOASH4JDgEByCQ3AIDsGhOn0CXii07bihBQkAAAAASUVORK5CYII=">
+<meta name="apple-mobile-web-app-title" content="Casas FL">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<style>
+:root{--navy:#13294B;--ceu:#6FB0E8;--papel:#F5F8FB;--tinta:#1C2430;--suave:#5B6B80;--input:#EBFFFF;--ok:#2E7D55;--alerta:#B7791F;--erro:#B03A2E;--linha:#D5DEE8;
+ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:Calibri,Carlito,"Segoe UI",-apple-system,Helvetica,Arial,sans-serif;font-size:17px;line-height:1.45}
+header{background:var(--navy);color:#fff;padding:22px 20px 26px}
+header .wrap{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+h1{margin:0;font-size:30px;font-weight:700;letter-spacing:.2px}
+header p{margin:4px 0 0;color:#BFD6EE;font-size:16px}
+.wrap{max-width:860px;margin:0 auto}
+main{padding:20px}
+section{margin-bottom:28px}
+h2{font-size:22px;margin:0 0 12px;color:var(--navy)}
+h3{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--suave);margin:18px 0 10px;font-weight:700}
+h3:first-of-type{margin-top:4px}
+.cota{min-width:220px}
+.cota .num{font-size:15px;color:#DCE9F6}
+.barra{height:8px;background:rgba(255,255,255,.18);border-radius:4px;overflow:hidden;margin-top:6px}
+.barra i{display:block;height:100%;background:var(--ceu);width:0}
+.barra i.alto{background:#F2B544}
+form,.painel{background:#fff;border:1px solid var(--linha);border-radius:10px;padding:18px}
+.grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+.grade>div{min-width:0}
+label{display:block;font-size:15px;color:var(--suave);margin-bottom:4px}
+input,select,textarea{width:100%;font:inherit;color:var(--tinta);background:var(--input);border:1px solid #9FC4CC;border-radius:6px;padding:10px 11px;min-height:44px}
+textarea{min-height:64px;resize:vertical}
+input:focus,select:focus,textarea:focus,button:focus-visible{outline:3px solid var(--ceu);outline-offset:1px}
+.opcoes{display:flex;flex-wrap:wrap;gap:8px}
+.opcoes label{display:flex;align-items:center;gap:8px;margin:0;background:var(--input);color:var(--tinta);border:1px solid #9FC4CC;border-radius:6px;padding:8px 12px;min-height:44px;cursor:pointer;font-size:16px}
+.opcoes input{width:auto;min-height:0;margin:0;accent-color:var(--navy)}
+.dica{font-size:14px;color:var(--suave);margin-top:4px}
+.lembrete{background:#FFF7E6;border-left:4px solid var(--alerta);padding:8px 12px;border-radius:4px;font-size:15px;margin:0 0 14px}
+button{font:inherit;border:0;border-radius:6px;padding:10px 16px;min-height:44px;cursor:pointer}
+.principal{background:var(--navy);color:#fff;font-weight:700}
+.secundario{background:#E4ECF4;color:var(--navy)}
+.perigo{background:#fff;color:var(--erro);border:1px solid #E3B9B4}
+button:disabled{opacity:.5;cursor:default}
+.previa{margin-top:16px;padding:14px;border:1px dashed var(--ceu);border-radius:8px;background:#F4F9FE;font-size:16px}
+.previa code{font-family:inherit;font-weight:700;color:var(--navy)}
+.aviso{color:var(--alerta);font-weight:700}.erro{color:var(--erro);font-weight:700}.certo{color:var(--ok);font-weight:700}
+.acoes{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+#msg{min-height:24px;margin-top:10px}
+/* cartão de busca: ficha de imóvel com canhoto */
+.ficha{display:grid;grid-template-columns:1fr auto;background:#fff;border:1px solid var(--linha);border-radius:10px;margin-bottom:14px;position:relative;overflow:hidden}
+.ficha .corpo{padding:16px 18px}
+.ficha .canhoto{padding:16px 18px;border-left:2px dashed var(--linha);display:flex;flex-direction:column;justify-content:center;gap:8px;min-width:170px;background:#FAFCFE;position:relative}
+.ficha .canhoto::before,.ficha .canhoto::after{content:"";position:absolute;left:-11px;width:20px;height:20px;border-radius:50%;background:var(--papel);border:1px solid var(--linha)}
+.ficha .canhoto::before{top:-11px}.ficha .canhoto::after{bottom:-11px}
+.local{font-size:28px;font-weight:700;color:var(--navy);line-height:1.1}
+.local small{font-size:16px;font-weight:400;color:var(--suave);margin-left:6px}
+.meta{color:var(--suave);font-size:15px;margin-top:4px}
+.precos{margin-top:8px;font-size:16px}
+.estado{display:inline-block;align-self:center;width:max-content;font-size:14px;padding:2px 8px;border-radius:10px;background:#E6F4EC;color:var(--ok)}
+.estado.aluguel{background:#FFF1D6;color:var(--alerta)}
+.editar{display:none;gap:8px;margin-top:10px}
+.editar.aberto{display:flex}
+.editar input{max-width:160px}
+.vazio{color:var(--suave);padding:18px;background:#fff;border:1px dashed var(--linha);border-radius:10px}
+footer{padding:0 20px 30px;color:var(--suave);font-size:14px}
+@media (max-width:620px){.ficha{grid-template-columns:1fr}.ficha .canhoto{border-left:0;border-top:2px dashed var(--linha);flex-direction:row;flex-wrap:wrap}.ficha .canhoto::before,.ficha .canhoto::after{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div><h1>Gerenciador de Casas</h1><p>Buscas semanais na Flórida, com relatório por e-mail aos sábados.</p></div>
+  <div class="cota" id="cota"><div class="num">Cota do mês: carregando…</div><div class="barra"><i id="barraCota"></i></div></div>
+</div></header>
+<main class="wrap">
+
+<section id="secToken" hidden>
+  <h2>Conectar ao robô</h2>
+  <div class="painel">
+    <p>Cole o token de acesso do GitHub. Ele fica guardado só neste navegador e dá acesso apenas ao repositório <b>Casas-FL-bot</b>.</p>
+    <label for="token">Token de acesso</label>
+    <input id="token" type="password" autocomplete="off" placeholder="github_pat_...">
+    <div class="acoes"><button class="principal" id="btnToken">Conectar</button></div>
+    <div id="msgToken"></div>
+  </div>
+</section>
+
+<section id="secNova" hidden>
+  <h2>Nova busca</h2>
+  <form id="form" novalidate>
+    <p class="lembrete">Campos em branco não filtram nada. Valores em dólares e pés quadrados (sq ft). Sempre no estado da Flórida (FL).</p>
+
+    <h3>Onde</h3>
+    <div class="grade">
+      <div><label for="local">Cidade ou região</label><input id="local" required placeholder="Orlando"></div>
+      <div><label for="modo">Modo de busca</label>
+        <select id="modo">
+          <option value="cidade">Pela cidade</option>
+          <option value="zip">Por ZIP codes</option>
+          <option value="raio">Por raio a partir de um endereço</option>
+        </select></div>
+      <div id="wZips" hidden><label for="zips">ZIP codes</label><input id="zips" placeholder="32801; 32803" inputmode="numeric">
+        <div class="dica">Separe por ponto e vírgula.</div></div>
+      <div id="wCentro" hidden><label for="centro">Endereço central</label><input id="centro" placeholder="100 E Pine St, Orlando, FL 32801"></div>
+      <div id="wRaio" hidden><label for="raio">Raio (milhas)</label><input id="raio" type="number" min="1" max="100" inputmode="numeric" placeholder="até 100"></div>
+    </div>
+
+    <h3>Finalidade</h3>
+    <div class="opcoes" role="radiogroup" aria-label="Finalidade">
+      <label><input type="radio" name="fin" id="finCompra" value="compra" checked>Compra</label>
+      <label><input type="radio" name="fin" id="finAluguel" value="aluguel">Aluguel</label>
+    </div>
+
+    <h3>Tipo de imóvel</h3>
+    <div class="opcoes" id="tipos">
+      <label><input type="checkbox" id="tSF" value="Single Family" checked>Casa (Single Family)</label>
+      <label><input type="checkbox" id="tCO" value="Condo">Condo</label>
+      <label><input type="checkbox" id="tTH" value="Townhouse">Townhouse</label>
+      <label><input type="checkbox" id="tMA" value="Manufactured">Manufactured</label>
+      <label><input type="checkbox" id="tMU" value="Multi-Family">Multi-Family</label>
+    </div>
+
+    <h3>Características</h3>
+    <div class="grade">
+      <div><label for="pmin" id="lPmin">Preço mínimo (US$)</label><input id="pmin" type="number" min="0" step="1000" inputmode="numeric"></div>
+      <div><label for="pmax" id="lPmax">Preço máximo (US$)</label><input id="pmax" type="number" min="0" step="1000" inputmode="numeric"></div>
+      <div><label for="quartos">Quartos (mínimo)</label><input id="quartos" type="number" min="0" max="10" inputmode="numeric"></div>
+      <div><label for="banheiros">Banheiros (mínimo)</label><input id="banheiros" type="number" min="0" max="10" step="0.5" inputmode="decimal"></div>
+      <div><label for="amin">Área mínima (sq ft)</label><input id="amin" type="number" min="0" step="50" inputmode="numeric"></div>
+      <div><label for="amax">Área máxima (sq ft)</label><input id="amax" type="number" min="0" step="50" inputmode="numeric"></div>
+      <div><label for="lote">Terreno mínimo (sq ft)</label><input id="lote" type="number" min="0" step="500" inputmode="numeric"></div>
+      <div><label for="ano">Construída a partir de (ano)</label><input id="ano" type="number" min="1900" max="2030" inputmode="numeric"></div>
+      <div><label for="hoa">HOA máximo (US$/mês)</label><input id="hoa" type="number" min="0" step="10" inputmode="numeric"></div>
+      <div><label for="dias">Anunciada há no máximo (dias)</label><input id="dias" type="number" min="1" inputmode="numeric"></div>
+    </div>
+
+    <h3>Tipo de anúncio</h3>
+    <div class="opcoes" id="anuncios">
+      <label><input type="checkbox" id="aSTD" value="Standard" checked>Normal</label>
+      <label><input type="checkbox" id="aNEW" value="New Construction" checked>Construção nova</label>
+      <label><input type="checkbox" id="aFOR" value="Foreclosure">Foreclosure</label>
+      <label><input type="checkbox" id="aSS" value="Short Sale">Short sale</label>
+    </div>
+
+    <h3>Observações</h3>
+    <textarea id="obs" aria-label="Observações" placeholder="Anotação para você mesmo (não filtra a busca)"></textarea>
+
+    <div class="previa" id="previa">Preencha a cidade ou região para ver o resumo.</div>
+    <div class="acoes"><button class="principal" id="btnSalvar" type="submit" disabled>Salvar busca</button><button class="secundario" type="reset">Limpar</button></div>
+    <div id="msg"></div>
+  </form>
+</section>
+
+<section id="secLista" hidden>
+  <h2>Buscas ativas</h2>
+  <div id="lista"></div>
+</section>
+</main>
+<footer class="wrap"><button class="secundario" id="btnAtualizar">Atualizar dados</button> <button class="secundario" id="btnEsquecer">Desconectar este navegador</button></footer>
+
+<script>
+const REPO = "d6t29ggrmy-del/Casas-FL-bot", RAMO = "main", ARQ = "buscas.csv";
+const COTA = 50, REQ_POR_BUSCA_MES = 5;
+const CAMPOS = ["id","local","modo","zips","centro","raio","finalidade","tipos","preco_min","preco_max","quartos_min","banheiros_min","area_min","area_max","terreno_min","ano_min","hoa_max","dias_max","anuncios","obs","status","criada_em"];
+const $ = s => document.querySelector(s);
+let buscas = [], shaCsv = null, estado = {};
+
+// ---------- armazenamento local do token ----------
+const tokenGet = () => { try { return localStorage.getItem("gc_token") || ""; } catch(e) { return ""; } };
+const tokenSet = t => { try { t ? localStorage.setItem("gc_token", t) : localStorage.removeItem("gc_token"); } catch(e) {} };
+
+// ---------- GitHub ----------
+function b64decode(s){ const bin = atob(s.replace(/\n/g,"")); return new TextDecoder().decode(Uint8Array.from(bin, c => c.charCodeAt(0))); }
+function b64encode(t){ const bytes = new TextEncoder().encode(t); let bin = ""; bytes.forEach(b => bin += String.fromCharCode(b)); return btoa(bin); }
+async function gh(caminho, opcoes = {}){
+  const r = await fetch("https://api.github.com/repos/" + REPO + "/contents/" + caminho + (opcoes.method ? "" : "?ref=" + RAMO + "&t=" + Date.now()), {
+    cache: "no-store", ...opcoes,
+    headers: { "Authorization": "Bearer " + tokenGet(), "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28" }
+  });
+  if (r.status === 401 || r.status === 403) throw new Error("TOKEN");
+  if (r.status === 404) throw new Error("404");
+  if (r.status === 409 || r.status === 422) throw new Error("CONFLITO");
+  if (!r.ok) throw new Error("HTTP " + r.status);
+  return r.json();
+}
+async function lerArquivo(caminho){ const j = await gh(caminho); return { texto: b64decode(j.content), sha: j.sha }; }
+async function lerJson(caminho){ try { return JSON.parse((await lerArquivo(caminho)).texto || "{}"); } catch(e) { if (e.message === "TOKEN") throw e; return {}; } }
+
+// ---------- CSV ----------
+function parseCsv(txt){
+  const linhas = txt.split(/\r?\n/).filter(l => l.trim());
+  if (!linhas.length) return [];
+  const cab = linhas.shift().split(",").map(s => s.trim());
+  return linhas.map(l => { const v = l.split(","); const o = {}; cab.forEach((c,i) => o[c] = (v[i] || "").trim()); return o; });
+}
+const limpa = v => String(v ?? "").replace(/[,\r\n]+/g, " ").trim();
+const montarCsv = lista => CAMPOS.join(",") + "\n" + lista.map(b => CAMPOS.map(c => limpa(b[c])).join(",")).join("\n") + (lista.length ? "\n" : "");
+async function gravarCsv(novaLista, mensagem){
+  const corpo = { message: "Gerenciador: " + mensagem, content: b64encode(montarCsv(novaLista)), branch: RAMO };
+  if (shaCsv) corpo.sha = shaCsv;
+  await gh(ARQ, { method: "PUT", body: JSON.stringify(corpo) });
+}
+
+// ---------- utilidades ----------
+const hojeChicago = () => new Intl.DateTimeFormat("en-CA", { timeZone: "America/Chicago" }).format(new Date());
+const brAno = iso => iso ? iso.slice(8,10) + "/" + iso.slice(5,7) + "/" + iso.slice(0,4) : "—";
+const usd = v => "US$ " + Math.round(+v).toLocaleString("pt-BR");
+const slug = t => t.normalize("NFD").replace(/[̀-ͯ]/g,"").toUpperCase().replace(/[^A-Z0-9]+/g,"-").replace(/^-|-$/g,"");
+const lista = s => (s || "").split(";").map(x => x.trim()).filter(Boolean);
+const val = id => $("#" + id).value.trim();
+const marcados = box => [...document.querySelectorAll("#" + box + " input:checked")].map(i => i.value);
+const ativas = () => buscas.filter(b => b.status === "ativa");
+const consumoMes = n => n * REQ_POR_BUSCA_MES;
+const TIPO_PT = { "Single Family": "Casa", "Condo": "Condo", "Townhouse": "Townhouse", "Manufactured": "Manufactured", "Multi-Family": "Multi-Family" };
+const ANUNCIO_PT = { "Standard": "Normal", "New Construction": "Construção nova", "Foreclosure": "Foreclosure", "Short Sale": "Short sale" };
+
+// ---------- montagem da nova busca ----------
+function sincronizarModo(){ const m = $("#modo").value; $("#wZips").hidden = m !== "zip"; $("#wCentro").hidden = m !== "raio"; $("#wRaio").hidden = m !== "raio"; }
+function sincronizarFinalidade(){
+  const alug = $("#finAluguel").checked;
+  $("#lPmin").textContent = alug ? "Aluguel mínimo (US$/mês)" : "Preço mínimo (US$)";
+  $("#lPmax").textContent = alug ? "Aluguel máximo (US$/mês)" : "Preço máximo (US$)";
+}
+function montarBusca(){
+  const fin = $("#finAluguel").checked ? "aluguel" : "compra";
+  const b = { local: val("local"), modo: $("#modo").value, finalidade: fin,
+    zips: $("#modo").value === "zip" ? lista(val("zips").replace(/,/g, ";")).join(";") : "",
+    centro: $("#modo").value === "raio" ? val("centro") : "", raio: $("#modo").value === "raio" ? val("raio") : "",
+    tipos: marcados("tipos").join(";"), preco_min: val("pmin"), preco_max: val("pmax"), quartos_min: val("quartos"), banheiros_min: val("banheiros"),
+    area_min: val("amin"), area_max: val("amax"), terreno_min: val("lote"), ano_min: val("ano"), hoa_max: val("hoa"), dias_max: val("dias"),
+    anuncios: marcados("anuncios").join(";"), obs: val("obs"), status: "ativa", criada_em: hojeChicago() };
+  const erros = [];
+  if (!b.local) erros.push("Informe a cidade ou região.");
+  if (b.modo === "zip" && (!b.zips || !lista(b.zips).every(z => /^\d{5}$/.test(z)))) erros.push("Cada ZIP code deve ter 5 dígitos.");
+  if (b.modo === "raio" && (!b.centro || !b.raio)) erros.push("Informe o endereço central e o raio.");
+  if (b.raio && (+b.raio < 1 || +b.raio > 100)) erros.push("O raio deve ficar entre 1 e 100 milhas.");
+  if (!b.tipos) erros.push("Marque pelo menos um tipo de imóvel.");
+  if (!b.anuncios) erros.push("Marque pelo menos um tipo de anúncio.");
+  if (b.preco_min && b.preco_max && +b.preco_min > +b.preco_max) erros.push("O preço mínimo está maior que o máximo.");
+  if (b.area_min && b.area_max && +b.area_min > +b.area_max) erros.push("A área mínima está maior que a máxima.");
+  b.id = slug(b.local) + "-" + (fin === "compra" ? "COMPRA" : "ALUGUEL");
+  if (buscas.some(x => x.id === b.id && x.status === "ativa")) erros.push("Já existe uma busca ativa com o nome " + b.id + ".");
+  return { b, erros };
+}
+function faixa(min, max, fmt){ if (!min && !max) return ""; return (min ? fmt(min) : "—") + " a " + (max ? fmt(max) : "—"); }
+function descrever(b){
+  const aluguel = b.finalidade === "aluguel";
+  const partes = [];
+  const onde = b.modo === "zip" ? "ZIP " + lista(b.zips).join(", ") : b.modo === "raio" ? b.raio + " mi de " + b.centro : "cidade inteira";
+  partes.push(onde);
+  partes.push(lista(b.tipos).map(t => TIPO_PT[t] || t).join(", "));
+  const p = faixa(b.preco_min, b.preco_max, v => usd(v) + (aluguel ? "/mês" : "")); if (p) partes.push(p);
+  if (b.quartos_min) partes.push(b.quartos_min + "+ quartos"); if (b.banheiros_min) partes.push(b.banheiros_min + "+ banheiros");
+  const a = faixa(b.area_min, b.area_max, v => (+v).toLocaleString("pt-BR") + " sq ft"); if (a) partes.push(a);
+  if (b.terreno_min) partes.push("terreno " + (+b.terreno_min).toLocaleString("pt-BR") + "+ sq ft");
+  if (b.ano_min) partes.push("a partir de " + b.ano_min);
+  if (b.hoa_max) partes.push("HOA até " + usd(b.hoa_max) + "/mês");
+  if (b.dias_max) partes.push("anunciada há até " + b.dias_max + " dias");
+  partes.push("anúncios: " + lista(b.anuncios).map(t => ANUNCIO_PT[t] || t).join(", "));
+  return partes.join(" | ");
+}
+function atualizarPrevia(){
+  const { b, erros } = montarBusca(), p = $("#previa");
+  $("#btnSalvar").disabled = !!erros.length;
+  if (!b.local) { p.textContent = "Preencha a cidade ou região para ver o resumo."; return; }
+  const total = consumoMes(ativas().length + 1);
+  let cota = "Consumo previsto com as buscas ativas: ~" + total + " de " + COTA + " requisições/mês.";
+  if (total > COTA) cota += '<br><span class="erro">Passa da cota gratuita. O robô pausaria as buscas antes do fim do mês. Encerre outra busca antes.</span>';
+  else if (total >= COTA * .8) cota += '<br><span class="aviso">Passa de 80% da cota gratuita.</span>';
+  p.innerHTML = "Nome: <code>" + b.id + "</code><br>" + descrever(b).replace(/&/g,"&amp;").replace(/</g,"&lt;") + "<br>" + cota +
+    (erros.length ? '<br><span class="erro">' + erros.join(" ") + "</span>" : "");
+}
+
+// ---------- lista ----------
+function desenharLista(){
+  const abertas = ativas(), L = $("#lista");
+  if (!abertas.length) { L.innerHTML = '<div class="vazio">Nenhuma busca ativa. Preencha o formulário acima para cadastrar a primeira.</div>'; return; }
+  L.innerHTML = "";
+  abertas.forEach(b => {
+    const aluguel = b.finalidade === "aluguel";
+    const el = document.createElement("div"); el.className = "ficha";
+    const corpo = document.createElement("div"); corpo.className = "corpo";
+    const titulo = document.createElement("div"); titulo.className = "local"; titulo.textContent = b.local + ", FL";
+    const sm = document.createElement("small"); sm.textContent = b.id; titulo.appendChild(sm);
+    const meta = document.createElement("div"); meta.className = "meta"; meta.textContent = descrever(b);
+    const precos = document.createElement("div"); precos.className = "precos";
+    precos.innerHTML = (aluguel ? "Aluguel máximo: <b>" : "Preço máximo: <b>") + (b.preco_max ? usd(b.preco_max) + (aluguel ? "/mês" : "") : "sem limite") + "</b>";
+    const meta2 = document.createElement("div"); meta2.className = "meta"; meta2.textContent = "Cadastrada em " + brAno(b.criada_em) + (b.obs ? " | " + b.obs : "");
+    const ed = document.createElement("div"); ed.className = "editar";
+    ed.innerHTML = '<input type="number" min="0" step="1000" inputmode="numeric" placeholder="US$ (vazio = sem limite)" aria-label="Novo preço máximo"><button class="principal">Salvar</button><button class="secundario">Cancelar</button>';
+    corpo.append(titulo, meta, precos, meta2, ed);
+    const canhoto = document.createElement("div"); canhoto.className = "canhoto";
+    canhoto.innerHTML = '<span class="estado' + (aluguel ? " aluguel" : "") + '">' + (aluguel ? "Aluguel" : "Compra") + '</span>' +
+      '<button class="secundario" data-a="preco">Alterar preço máximo</button><button class="perigo" data-a="encerrar">Encerrar</button>';
+    el.append(corpo, canhoto);
+    const inp = ed.querySelector("input");
+    canhoto.querySelector('[data-a="preco"]').onclick = () => { ed.classList.add("aberto"); inp.value = b.preco_max || ""; inp.focus(); };
+    ed.querySelector(".secundario").onclick = () => ed.classList.remove("aberto");
+    ed.querySelector(".principal").onclick = () => alterar(b.id, "preco", inp.value.trim());
+    canhoto.querySelector('[data-a="encerrar"]').onclick = () => {
+      if (confirm("Encerrar a busca " + b.id + "? O robô deixa de procurar casas nesse local.")) alterar(b.id, "encerrar");
+    };
+    L.appendChild(el);
+  });
+}
+async function alterar(id, acao, valor){
+  if (acao === "preco" && valor && !(+valor > 0)) { alert("Informe um valor em dólares maior que zero, ou deixe em branco para sem limite."); return; }
+  try {
+    await carregar(true);
+    const alvo = buscas.find(b => b.id === id && b.status === "ativa");
+    if (alvo && acao === "preco" && valor && alvo.preco_min && +valor < +alvo.preco_min) { alert("O preço máximo ficou menor que o mínimo (" + usd(alvo.preco_min) + ")."); return; }
+    const nova = buscas.map(b => {
+      if (b !== alvo) return b;
+      return acao === "encerrar" ? { ...b, status: "encerrada" } : { ...b, preco_max: valor ? String(Math.round(+valor)) : "" };
+    });
+    await gravarCsv(nova, (acao === "encerrar" ? "encerrar " : "preço máximo " + (valor || "sem limite") + " em ") + id);
+    await carregar();
+    toast(acao === "encerrar" ? "Busca encerrada." : "Preço máximo salvo. Vale a partir da próxima busca semanal.");
+  } catch(e) { tratarErro(e); }
+}
+
+// ---------- carregamento ----------
+async function carregar(silencioso){
+  try { const csv = await lerArquivo(ARQ); buscas = parseCsv(csv.texto); shaCsv = csv.sha; }
+  catch(e) { if (e.message !== "404") throw e; buscas = []; shaCsv = null; }
+  if (silencioso) return;
+  estado = await lerJson("estado.json");
+  const mes = hojeChicago().slice(0,7), usadas = estado.mes === mes ? (estado.requisicoes || 0) : 0;
+  const prev = consumoMes(ativas().length);
+  $("#cota .num").textContent = "Cota do mês: " + usadas + " de " + COTA + " requisições | ritmo das buscas ativas: ~" + prev + "/mês";
+  const bar = $("#barraCota"); bar.style.width = Math.min(100, usadas / COTA * 100) + "%"; bar.className = usadas >= COTA * .8 ? "alto" : "";
+  desenharLista(); atualizarPrevia();
+}
+function toast(t, cls = "certo"){ const m = $("#msg"); m.innerHTML = '<span class="' + cls + '">' + t + "</span>"; }
+function tratarErro(e){
+  if (e.message === "TOKEN") { mostrar(false); $("#msgToken").innerHTML = '<p class="erro">O token foi recusado ou expirou. Gere um novo e cole acima.</p>'; return; }
+  if (e.message === "CONFLITO") { toast("O robô atualizou o arquivo enquanto você editava. Os dados foram recarregados: repita a ação.", "aviso"); carregar(); return; }
+  if (e.message === "404") { toast("Não encontrei o repositório Casas-FL-bot. Confira o nome e as permissões do token.", "erro"); return; }
+  toast("Falha de comunicação com o GitHub (" + e.message + "). Verifique a internet e tente de novo.", "erro");
+}
+function mostrar(conectado){ $("#secToken").hidden = conectado; $("#secNova").hidden = !conectado; $("#secLista").hidden = !conectado; }
+
+// ---------- eventos ----------
+$("#form").addEventListener("input", atualizarPrevia);
+$("#modo").addEventListener("change", () => { sincronizarModo(); atualizarPrevia(); });
+document.querySelectorAll('input[name="fin"]').forEach(r => r.addEventListener("change", () => { sincronizarFinalidade(); atualizarPrevia(); }));
+$("#form").addEventListener("reset", () => setTimeout(() => { sincronizarModo(); sincronizarFinalidade(); atualizarPrevia(); $("#msg").innerHTML = ""; }));
+$("#form").addEventListener("submit", async ev => {
+  ev.preventDefault();
+  const btn = $("#btnSalvar"); btn.disabled = true; btn.textContent = "Salvando…";
+  try {
+    await carregar(true);
+    const { b, erros } = montarBusca();
+    if (erros.length) { toast(erros.join(" "), "erro"); return; }
+    const total = consumoMes(ativas().length + 1);
+    if (total > COTA && !confirm("Com esta busca, o consumo previsto (" + total + "/mês) passa da cota gratuita de " + COTA + ". O robô pausaria as buscas antes do fim do mês. Salvar mesmo assim?")) return;
+    const semAntiga = buscas.filter(x => !(x.id === b.id && x.status === "encerrada"));
+    await gravarCsv(semAntiga.concat([b]), "nova busca " + b.id);
+    $("#form").reset();
+    await carregar();
+    toast("Busca " + b.id + " salva. Ela entra na próxima busca semanal e no relatório de sábado.");
+  } catch(e) { tratarErro(e); }
+  finally { btn.textContent = "Salvar busca"; atualizarPrevia(); }
+});
+$("#btnToken").onclick = async () => {
+  const t = $("#token").value.trim(); if (!t) return;
+  tokenSet(t); $("#msgToken").textContent = "Conectando…";
+  try { mostrar(true); await carregar(); $("#token").value = ""; $("#msgToken").textContent = ""; }
+  catch(e) { tokenSet(""); tratarErro(e); }
+};
+$("#btnAtualizar").onclick = () => carregar().then(() => toast("Dados atualizados.")).catch(tratarErro);
+$("#btnEsquecer").onclick = () => { if (confirm("Remover o token deste navegador?")) { tokenSet(""); location.reload(); } };
+
+sincronizarModo(); sincronizarFinalidade();
+(async () => { if (!tokenGet()) { mostrar(false); return; } mostrar(true); try { await carregar(); } catch(e) { tratarErro(e); } })();
+</script>
+</body>
+</html>
