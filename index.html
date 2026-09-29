@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<!-- Gerenciador de Casas | v1.2 · 28-set-26 · 7:30 pm | última alteração: página acompanha a largura da tela (mín. 10px) + erro claro quando o token não acessa o repositório -->
+<!-- Gerenciador de Casas | v1.3 · 28-set-26 · 7:37 pm | última alteração: tipo de imóvel Apartamento -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
 <title>Gerenciador de Casas</title>
@@ -86,7 +86,7 @@ footer{padding:0 1.1765rem 1.7647rem;color:var(--suave);font-size:0.8235rem}
   <div><h1>Gerenciador de Casas</h1><p>Buscas semanais na Flórida, com relatório por e-mail aos sábados.</p></div>
   <div class="lado">
   <div class="cota" id="cota"><div class="num">Cota do mês: carregando…</div><div class="barra"><i id="barraCota"></i></div></div>
-    <div class="stamp" aria-label="Versão da página">v1.2 · 28-set-26<br>7:30 pm</div>
+    <div class="stamp" aria-label="Versão da página">v1.3 · 28-set-26<br>7:37 pm</div>
   </div>
 </div></header>
 <main class="wrap">
@@ -135,6 +135,7 @@ footer{padding:0 1.1765rem 1.7647rem;color:var(--suave);font-size:0.8235rem}
       <label><input type="checkbox" id="tTH" value="Townhouse">Townhouse</label>
       <label><input type="checkbox" id="tMA" value="Manufactured">Manufactured</label>
       <label><input type="checkbox" id="tMU" value="Multi-Family">Multi-Family</label>
+      <label><input type="checkbox" id="tAP" value="Apartment">Apartamento</label>
     </div>
 
     <h3>Características</h3>
@@ -228,7 +229,7 @@ const val = id => $("#" + id).value.trim();
 const marcados = box => [...document.querySelectorAll("#" + box + " input:checked")].map(i => i.value);
 const ativas = () => buscas.filter(b => b.status === "ativa");
 const consumoMes = n => n * REQ_POR_BUSCA_MES;
-const TIPO_PT = { "Single Family": "Casa", "Condo": "Condo", "Townhouse": "Townhouse", "Manufactured": "Manufactured", "Multi-Family": "Multi-Family" };
+const TIPO_PT = { "Single Family": "Casa", "Condo": "Condo", "Townhouse": "Townhouse", "Manufactured": "Manufactured", "Multi-Family": "Multi-Family", "Apartment": "Apartamento" };
 const ANUNCIO_PT = { "Standard": "Normal", "New Construction": "Construção nova", "Foreclosure": "Foreclosure", "Short Sale": "Short sale" };
 
 // ---------- montagem da nova busca ----------
